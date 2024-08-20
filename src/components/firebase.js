@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, FacebookAuthProvider } from 'firebase/auth';
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+import { getAuth, browserLocalPersistence,GoogleAuthProvider, FacebookAuthProvider,setPersistence } from 'firebase/auth';
+
 const firebaseConfig = {
     apiKey: "AIzaSyBY1l-GdEbB6lp3XLkih_KZ2ZL2aREU1bM",
     authDomain: "fitnesstrack-4bf38.firebaseapp.com",
@@ -17,4 +16,5 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 
+setPersistence(auth, browserLocalPersistence);
 export { auth, googleProvider, facebookProvider };

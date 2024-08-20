@@ -6,34 +6,42 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput,
-  MDBIcon,
-  MDBCheckbox
+  MDBCheckbox,
+  MDBIcon
 } from 'mdb-react-ui-kit';
-import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { signInWithEmailAndPassword, signInWithPopup, signInWithRedirect } from 'firebase/auth';
 import { auth, googleProvider, facebookProvider } from './firebase';
+import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("Connexion reussie");
+      toast.success('Connexion réussie !');
+      navigate('/Home');
     } catch (error) {
-      setError(error.message);
-      console.log("Connexion echouee");
+      toast.error('Connexion échouée');
     }
   };
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
-      console.log("Connexion reussie");
+      if (window.innerWidth <= 768) {
+        await signInWithRedirect(auth, googleProvider);
+        toast.success('Connexion réussie !');
+        navigate('/');
+      } else {
+        await signInWithPopup(auth, googleProvider);
+      }
     } catch (error) {
       setError(error.message);
     }
@@ -42,7 +50,7 @@ const Login = () => {
   const handleFacebookLogin = async () => {
     try {
       await signInWithPopup(auth, facebookProvider);
-      console.log("Connexion reussie");
+      console.log("Connexion réussie");
     } catch (error) {
       setError(error.message);
     }
@@ -57,24 +65,38 @@ const Login = () => {
               <h2 className="fw-bold mb-2 text-center">Sign in</h2>
               <p className="text-black-50 mb-3">Please enter your login and password!</p>
               <form onSubmit={handleLogin}>
-                <MDBInput
-                  wrapperClass='mb-4 w-100'
-                  label='Email address'
-                  type='email'
-                  size="lg"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <MDBInput
-                  wrapperClass='mb-4 w-100'
-                  label='Password'
-                  type='password'
-                  size="lg"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
+                {/* Champ d'email avec icône à gauche */}
+                <div className="input-wrapper mb-4 w-100">
+                  <i className="material-icons-round lock-icon">email</i>
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    className="input-field"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+
+                {/* Champ de mot de passe avec icône de verrou à gauche et option pour montrer/cacher le mot de passe */}
+                <div className="input-wrapper mb-4 w-100">
+                  <i className="material-icons-round lock-icon">lock</i>
+                  <input
+                    type={isPasswordShown ? 'text' : 'password'}
+                    placeholder="Password"
+                    className="input-field"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <i
+                    onClick={() => setIsPasswordShown(prevState => !prevState)}
+                    className="material-icons-round eye-icon"
+                  >
+                    {isPasswordShown ? 'visibility' : 'visibility_off'}
+                  </i>
+                </div>
+
                 <MDBCheckbox name='flexCheck' id='flexCheckDefault' className='mb-4' label='Remember password' />
                 <MDBBtn size='lg' type='submit'>
                   Login
@@ -90,6 +112,17 @@ const Login = () => {
                 <MDBIcon fab icon="facebook-f" className="mx-2" />
                 Sign in with Facebook
               </MDBBtn>
+
+              {/* Bouton Sign Up en bas de la page */}
+              <div className="signup-container">
+                <span className="signup-text">Don't have an account? </span>
+                <Link to="/signup">
+                  <MDBBtn color="link" size="lg" className="signup-button p-0">
+                    Sign Up
+                  </MDBBtn>
+                </Link>
+              </div>
+
             </MDBCardBody>
           </MDBCard>
         </MDBCol>

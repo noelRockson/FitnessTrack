@@ -1,0 +1,76 @@
+.login-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  .signup-container {
+    margin-top: auto; 
+    text-align: center;
+  }
+/* Wrapper pour le champ de saisie avec icône à gauche */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Champ de saisie avec espace à gauche pour l'icône */
+.input-field {
+  width: 100%;
+  padding: 10px 40px 10px 40px; /* Espace à gauche et à droite pour les icônes */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Icône de verrou positionnée à gauche */
+.input-wrapper .material-icons-round.lock-icon {
+  position: absolute;
+  left: 10px; /* Positionnement à gauche */
+  color: #555;
+}
+
+/* Icône d'œil pour montrer/cacher le mot de passe, positionnée à droite */
+.input-wrapper .material-icons-round.eye-icon {
+  position: absolute;
+  right: 10px; /* Positionnement à droite */
+  cursor: pointer;
+  color: #555;
+}

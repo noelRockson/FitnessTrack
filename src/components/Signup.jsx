@@ -6,16 +6,17 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput
 } from 'mdb-react-ui-kit';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';  
-
+import { toast } from 'react-toastify';
 import './Signup.css';
+import { Navigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [error, setError] = useState('');
 
   const handleSignUp = async (e) => {
@@ -26,10 +27,11 @@ const SignUp = () => {
       if (user === '') {
         console.log("");
       }
-      console.log("Enregistrement effectuer avec succes");
+      toast.success('Successfully Registered')
+      Navigate('/Home');
     } catch (error) {
       setError(error.message);
-      console.log("Enregistrement non effectuer ");
+      toast.error('Registration not performed');
     }
   };
 
@@ -42,24 +44,36 @@ const SignUp = () => {
               <h2 className="fw-bold mb-2 text-center">Sign Up</h2>
               <p className="text-black-50 mb-3">Create a new account!</p>
               <form onSubmit={handleSignUp}>
-                <MDBInput
-                  wrapperClass='mb-4 w-100'
-                  label='Email address'
-                  type='email'
-                  size="lg"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <MDBInput
-                  wrapperClass='mb-4 w-100'
-                  label='Password'
-                  type='password'
-                  size="lg"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
+              <div className="input-wrapper mb-4 w-100">
+                  <i className="material-icons-round lock-icon">email</i>
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    className="input-field"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+
+                {/* Champ de mot de passe avec icône de verrou à gauche et option pour montrer/cacher le mot de passe */}
+                <div className="input-wrapper mb-4 w-100">
+                  <i className="material-icons-round lock-icon">lock</i>
+                  <input
+                    type={isPasswordShown ? 'text' : 'password'}
+                    placeholder="Password"
+                    className="input-field"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <i
+                    onClick={() => setIsPasswordShown(prevState => !prevState)}
+                    className="material-icons-round eye-icon"
+                  >
+                    {isPasswordShown ? 'visibility' : 'visibility_off'}
+                  </i>
+                </div>
                 <MDBBtn size='lg' type='submit'>
                   Sign Up
                 </MDBBtn>
