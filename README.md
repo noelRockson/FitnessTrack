@@ -1,5 +1,3 @@
-# FitnessTrack
-Une application Web et mobile de suivi de fitness permettant aux utilisateurs de suivre leurs activités physiques, de définir des objectifs personnels, et de consulter des statistiques sur leurs progrès et offrir une expérience utilisateur fluide.
 ## Points de Boucle dans le Projet
 
 Ce projet comprend plusieurs points de boucle importants qui sont essentiels au bon fonctionnement des fonctionnalités. Voici une vue d'ensemble de ces points de boucle :
@@ -49,4 +47,14 @@ Ce projet comprend plusieurs points de boucle importants qui sont essentiels au 
   - Mise à jour dynamique des statistiques
   - Affichage des tendances et des performances
 
+---
+
+## Documents du Projet
+
+- [Document de Projet](docs/Document%20de%20Projet%20Fitness.pdf)
+- [Document d'Analyse et de Conception](docs/Document%20d'analyse%20et%20conception.pdf)
+- [Document Technique](docs/)
+- [Rapport des Tests](docs/Rapport%20des%20Tests.pdf)
+- [Rapport d'analyse](docs/)
+- [Script de la base De donnees MongoDB](/Script%20Creation%20DB.txt)
 
