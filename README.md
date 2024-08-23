@@ -49,6 +49,4 @@ Ce projet comprend plusieurs points de boucle importants qui sont essentiels au 
   - Mise à jour dynamique des statistiques
   - Affichage des tendances et des performances
 
----
 
-Pour toute question ou clarification supplémentaire, veuillez consulter les fichiers source correspondants ou contacter l'équipe de développement.
