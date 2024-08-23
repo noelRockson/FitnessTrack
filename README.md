@@ -49,4 +49,12 @@ Ce projet comprend plusieurs points de boucle importants qui sont essentiels au 
 
 ---
 
-Pour toute question ou clarification supplémentaire, veuillez consulter les fichiers source correspondants ou contacter l'équipe de développement.
+## Documents du Projet
+
+- [Document de Projet](docs/Document%20de%20Projet%20Fitness.pdf)
+- [Document d'Analyse et de Conception](docs/Document%20d'analyse%20et%20conception.pdf)
+- [Document Technique](docs/)
+- [Rapport des Tests](docs/Rapport%20des%20Tests.pdf)
+- [Rapport d'analyse](docs/)
+- [Script de la base De donnees MongoDB](/Script%20Creation%20DB.txt)
+
