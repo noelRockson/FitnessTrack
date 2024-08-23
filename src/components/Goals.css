@@ -1,0 +1,83 @@
+.text-center {
+  text-align: center;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.p-4 {
+  padding: 1.5rem;
+}
+
+.separator1{
+  height: 1px;
+  background-color: #ddd; /* Couleur de la ligne du séparateur */
+  margin: -10px 0;
+}
+.goals-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0px;
+  }
+  
+  .goal-card {
+    max-width: 300px;
+    min-width: 250px;
+    margin: 10px;
+  }
+  
+  .goal-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  .goals-container {
+    display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  }
+  
+  .charts-section, .goals-section {
+    margin-bottom: 20px;
+  }
+  
+  .charts-section .goal-card, .goals-section .goal-card {
+    margin-bottom: 20px;
+  }
+  
+  @media (min-width: 600px) {
+    .charts-section .goal-card {
+      flex: 1;
+    }
+  
+    .goals-section .goal-card {
+      flex: 1;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .charts-section .goal-card, .goals-section .goal-card {
+      width: 100%;
+    }
+  }
+
+  .header .logo {
+  height: 70px;
+  margin-right: -10px;
+}
+
+@media (min-width: 600px) {
+  .header .logo {
+    height: 50px;
+  }
+}
+
+@media (min-width: 900px) {
+  .header .logo {
+    height: 70px;
+    margin-right: -10px;
+  }
+}
+  

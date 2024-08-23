@@ -1,0 +1,65 @@
+use FitnessTrackDB
+
+db.createCollection("Users")
+
+// Insertion d'un document dans la collection 'Users' 
+db.Users.insertOne({
+    _id: UUID(),
+    username: "Noel Rockson",
+    email: "rockson.noel@gmail.com",
+    password_hash: "hashed_password",
+    created_at: new Date(),
+    workouts: [
+        {
+            workout_id: UUID(),
+            workout_type: "Running",
+            duration: 45, // en minutes
+            calories_burned: 400,
+            workout_date: ISODate("2024-08-01T07:00:00Z")
+        },
+        {
+            workout_id: UUID(),
+            workout_type: "Swimming",
+            duration: 30, // en minutes
+            calories_burned: 250,
+            workout_date: ISODate("2024-08-02T08:00:00Z")
+        }
+    ],
+    goals: [
+        {
+            goal_id: UUID(),
+            goal_type: "Weight Loss",
+            target_value: 5, // en kg
+            deadline: ISODate("2024-09-01T00:00:00Z"),
+            achieved: false
+        },
+        {
+            goal_id: UUID(),
+            goal_type: "Running Distance",
+            target_value: 100, // en km
+            deadline: ISODate("2024-12-31T00:00:00Z"),
+            achieved: false
+        }
+    ],
+    notifications: [
+        {
+            notification_id: UUID(),
+            notification_type: "Reminder",
+            message: "Don't forget your workout today!",
+            sent_at: ISODate("2024-08-01T06:00:00Z")
+        },
+        {
+            notification_id: UUID(),
+            notification_type: "Badge Earned",
+            message: "Congratulations! You've earned the Marathon Badge!",
+            sent_at: ISODate("2024-08-01T07:45:00Z")
+        }
+    ],
+    badges: [
+        {
+            badge_id: UUID(),
+            badge_name: "Marathon Runner",
+            earned_at: ISODate("2024-08-01T07:45:00Z")
+        }
+    ]
+})

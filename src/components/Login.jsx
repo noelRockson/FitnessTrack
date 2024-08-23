@@ -14,6 +14,16 @@ import { auth, googleProvider, facebookProvider } from './firebase';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 import { toast } from 'react-toastify';
+import image1 from '../assets/pictures/athlete-male.jpg';
+import image2 from '../assets/pictures/beautiful-body.jpg';
+import image3 from '../assets/pictures/blonde-workout.jpg';
+import image4 from '../assets/pictures/girl-workout.jpg';
+import image5 from '../assets/pictures/muscle.jpg';
+import image6 from '../assets/pictures/muscle2.jpg';
+import image7 from '../assets/pictures/swim-pool.jpg';
+import image8 from '../assets/pictures/swimmer-olympian.jpg';
+import image9 from '../assets/pictures/swimming-pool.jpg';
+import image10 from '../assets/pictures/woman-workout.jpg';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -57,7 +67,20 @@ const Login = () => {
   };
 
   return (
+    
     <MDBContainer fluid>
+      <div className="background-carousel">
+        <img src={image1} alt="Fitness 1" />
+        <img src={image2} alt="Fitness 2" />
+        <img src={image3} alt="Fitness 3" />
+        <img src={image4} alt="Fitness 4" />
+        <img src={image5} alt="Fitness 5" />
+        <img src={image6} alt="Fitness 6" />
+        <img src={image7} alt="Fitness 7" />
+        <img src={image8} alt="Fitness 8" />
+        <img src={image9} alt="Fitness 9" />
+        <img src={image10} alt="Fitness 10" />
+      </div>
       <MDBRow className='d-flex justify-content-center align-items-center h-100'>
         <MDBCol col='12'>
           <MDBCard className='bg-white my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '500px' }}>
@@ -65,7 +88,7 @@ const Login = () => {
               <h2 className="fw-bold mb-2 text-center">Sign in</h2>
               <p className="text-black-50 mb-3">Please enter your login and password!</p>
               <form onSubmit={handleLogin}>
-                {/* Champ d'email avec icône à gauche */}
+                {/* Champ d'email avec icone a gauche */}
                 <div className="input-wrapper mb-4 w-100">
                   <i className="material-icons-round lock-icon">email</i>
                   <input
@@ -78,7 +101,7 @@ const Login = () => {
                   />
                 </div>
 
-                {/* Champ de mot de passe avec icône de verrou à gauche et option pour montrer/cacher le mot de passe */}
+                {/* Champ de mot de passe avec icone de verrou a gauche et option pour montrer/cacher le mot de passe */}
                 <div className="input-wrapper mb-4 w-100">
                   <i className="material-icons-round lock-icon">lock</i>
                   <input
@@ -113,7 +136,6 @@ const Login = () => {
                 Sign in with Facebook
               </MDBBtn>
 
-              {/* Bouton Sign Up en bas de la page */}
               <div className="signup-container">
                 <span className="signup-text">Don't have an account? </span>
                 <Link to="/signup">

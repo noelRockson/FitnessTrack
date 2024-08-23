@@ -1,29 +1,3 @@
-// import React, { createContext, useState, useContext, useEffect } from 'react';
-// import { onAuthStateChanged } from 'firebase/auth';
-// import { auth } from './firebase'; 
-
-// const AuthContext = createContext();
-
-// export const AuthProvider = ({ children }) => {
-//   const [user, setUser] = useState(null);
-
-//   useEffect(() => {
-//     const unsubscribe = onAuthStateChanged(auth, (user) => {
-//       setUser(user);
-//     });
-
-//     return () => unsubscribe();
-//   }, []);
-
-//   return (
-//     <AuthContext.Provider value={{ user }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
-
-// export const useAuth = () => useContext(AuthContext);
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
@@ -33,11 +7,13 @@ const AuthContext = createContext();
 // Fournisseur d'authentification
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const checkUser = () => {
     const auth = getAuth();
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
   };
 
@@ -46,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, checkUser }}>
+    <AuthContext.Provider value={{ user, loading, checkUser }}>
       {children}
     </AuthContext.Provider>
   );
